@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luistinterän kaarevuslaskin</title>
+	<style>
+        body {
+            background-color: #A5D3FD;
+        }
+    </style>
+    <script>
+        function calculateRoundedAndDividedResult() {
+            // Get the input values
+            var num1 = document.getElementById('num1').value;
+            var num2 = document.getElementById('num2').value;
+
+            // Replace commas with dots and parse the input values as floats
+            num1 = parseFloat(num1.replace(',', '.'));
+            num2 = parseFloat(num2.replace(',', '.'));
+
+            // Check if the input is a valid number
+            if (isNaN(num1) || isNaN(num2)) {
+                alert('Please enter valid numbers');
+                return;
+            }
+
+            // r=ROUND(((d/8)+(s*s)/(4*d))/1000;0), d=mittalangan paksuus, s=mitattu etäisyys
+            var result = Math.round(((num1 / 8) + (num2 * num2) / (4 * num1)) / 1000);
+			
+            // Display the result
+            document.getElementById('result').innerHTML = 'Terän kaarevuussäde metreinä: <br>' + result ;
+					    }
+    </script>
+</head>
+<body>
+
+<font face="Arial" size="3px" color="#220099">
+<meta charset="utf-8">
+
+    <h1>Luistinterän kaarevuuslaskin</h1>
+	<br>
+	<img src="https://i.imgur.com/Zpxp2Kk.jpeg" alt="Lankamitta" width="500" height="250">
+	<br>
+	<br>
+    <label for="num1">Mittalangan paksuus (d), mm:</label>
+	<input type="text" id="num1">
+	<br>
+    <br>
+    <label for="num2">Mitattu väli (s), mm:</label>
+    <input type="text" id="num2">
+	<br>
+	<br>
+    <button onclick="calculateRoundedAndDividedResult()">Laske kaarevuussäde (r)</button>
+	<font face="Arial" size="5px" color="#220099">
+	<br>
+	<br>
+	<b>
+    <div id="result"></div>
+	</b>
+	<br>
+    </a>
+
+</body>
+
+</html>
